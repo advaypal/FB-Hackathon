@@ -207,4 +207,14 @@ var Loader = React.createClass({
 	}
 });
 
+var ActivitySpinner = React.createClass({
+    render: function() {
+        return (
+            <div className="loader"></div>
+      );
+    }
+});
+
+module.exports 
+
 ReactDOM.render(<App />, document.getElementById("main"));
