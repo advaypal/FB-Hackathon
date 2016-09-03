@@ -70,7 +70,7 @@ var Home = React.createClass({
 			<div className="col-md-4">
 			<div className="form-group">
 			<div id="the-basics">
-			<input type="text" className="custom-input typeahead animated fadeIn" onChange={this.handleChangePlayer1}></input>
+			<input type="text" className="custom-input typeahead animated fadeIn" placeholder="@realDonaldTrump" onChange={this.handleChangePlayer1}></input>
 			</div>
 			</div>
 			</div>
@@ -79,7 +79,7 @@ var Home = React.createClass({
 			</div>
 			<div className="col-md-4">
 			<div className="form-group">
-			<input type="text" className="custom-input typeahead animated fadeIn" onChange={this.handleChangePlayer2}></input>
+			<input type="text" className="custom-input typeahead animated fadeIn" placeholder="@HillaryClinton" onChange={this.handleChangePlayer2}></input>
 			</div>
 			</div>
 			</div>
