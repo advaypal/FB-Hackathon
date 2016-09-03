@@ -88,7 +88,7 @@ var Battle = React.createClass({
 	    };
 	},
 	componentDidMount() {
-	    var apiUrl = "../sample?id1=" + player1 + "&id2=" + player2;
+	    var apiUrl = "../tweets?id1=" + player1 + "&id2=" + player2;
 	    this.serverRequest = $.get(apiUrl, function (result) {
 	    	var result = JSON.parse(result);
 	    	console.log(result);

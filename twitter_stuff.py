@@ -7,7 +7,8 @@ def getImage(user_screen_name):
 
 def getText(user_screen_name):
 	all_tweets = get_all_tweets(user_screen_name)
-	user_tweet_string = ' '.join([tweet["text"] if tweet["text"] else "" for tweet in all_tweets])
+	#print all_tweets[0]
+	user_tweet_string = ' '.join([tweet.text if tweet.text else "" for tweet in all_tweets])
 	text_generator = TextGenerator(user_tweet_string)
 	return text_generator.generate_text();
 	#return generated tweets and store for later??
