@@ -1,4 +1,5 @@
 import random
+K = 2
 
 
 class MarkovModel(object):
@@ -13,20 +14,22 @@ class MarkovModel(object):
         word_dict = {}
 
         num_words = len(text)
-        for idx, word in enumerate(text):
-            if idx + 1 == num_words:
+        for idx in range(len(text)):
+            if idx + K == num_words:
                 continue
 
-            if word in word_dict:
-                word_dict[word][self._FREQ_IDX] += 1
-            else:
-                word_dict[word] = [1, {}]
+            current_words = ' '.join(text[idx : idx + K])
 
-            next_word = text[idx + 1]
-            if next_word in word_dict[word][self._NEXT_WORD_MAP_IDX]:
-                word_dict[word][self._NEXT_WORD_MAP_IDX][next_word] += 1
+            if current_words in word_dict:
+                word_dict[current_words][self._FREQ_IDX] += 1
             else:
-                word_dict[word][self._NEXT_WORD_MAP_IDX][next_word] = 1
+                word_dict[current_words] = [1, {}]
+
+            next_word = text[idx + K]
+            if next_word in word_dict[current_words][self._NEXT_WORD_MAP_IDX]:
+                word_dict[current_words][self._NEXT_WORD_MAP_IDX][next_word] += 1
+            else:
+                word_dict[current_words][self._NEXT_WORD_MAP_IDX][next_word] = 1
 
         return word_dict
 
@@ -65,7 +68,7 @@ class TextGenerator(object):
         super(TextGenerator, self).__init__()
         text = [word.replace('&amp;', '&') for word in text.split() if "https://" not in word]
         self._markov_model = MarkovModel(text)
-        self._first_word = text[0]
+        self._first_word = ' '.join(text[:K])
 
     def generate_text(self, max_char, start_word=None):
         current = start_word if start_word else self._first_word
@@ -76,7 +79,7 @@ class TextGenerator(object):
         while not exceeded_max_char:
             next_word = self._markov_model.get_next_word(current)
             next_word = next_word if next_word else self._first_word
-            current = next_word
+            current = ' '.join(current.split()[1:].append(next_word))
 
             if num_chars + len(next_word) > max_char:
                 exceeded_max_char = True
