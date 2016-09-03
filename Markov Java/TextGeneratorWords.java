@@ -7,7 +7,7 @@ public class TextGeneratorWords {
 	/**
 	 * The main function takes reads in the file as input, and keeps generating the next word
 	 * The initial value of the kgram is the first 'order' characters of the string
-	 * @param args the order, the number of characters to generate, and the file name 
+	 * @param args the order, the number of characters to generate, and the file name
 	 */
 	public static void main(String[] args) {
 		try {
@@ -19,7 +19,7 @@ public class TextGeneratorWords {
 			int order = Integer.parseInt(args[0]);
 			int n = Integer.parseInt(args[1]);
 			MarkovModelWords model = new MarkovModelWords(text);
-			//count keeps track of whether we have reached the end of the file 
+			//count keeps track of whether we have reached the end of the file
 			int count = 0;
 			//stores initial kgram value
 			String first = text.substring(count, order + count);
