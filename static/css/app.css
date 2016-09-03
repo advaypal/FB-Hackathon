@@ -85,3 +85,28 @@ hr {
     box-sizing: border-box;
     border-radius: 10px;
 }
+
+.rectangle {
+	width: 100%;
+	height: 100px;
+	background: red;
+}
+
+.circle {
+	width: 75px;
+	height: 75px;
+	border-radius: 50%;
+	background: blue;
+}
+
+.bg-text-player1 {
+	padding: 10px;
+	border-radius: 7px;
+	background-color: rgba(241, 240, 240, 75);
+}
+
+.bg-text-player2 {
+	padding: 10px;
+	border-radius: 7px;
+	background-color: rgba(0, 132, 255, 75);
+}
