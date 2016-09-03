@@ -86,3 +86,51 @@ hr {
     box-sizing: border-box;
     border-radius: 10px;
 }
+
+.bg-text-player1 {
+	padding: 10px;
+	border-radius: 7px;
+	background-color: rgba(241, 240, 240, 75);
+}
+
+.profile-pic {
+	width: 100px;
+	height: 100px;
+}
+
+.bg-text-player2 {
+	padding: 10px;
+	border-radius: 7px;
+	background-color: rgba(0, 132, 255, 75);
+}
+
+.custom-footer {
+	background-color: rgba(255,255,250,0.1);
+	font-family: "Roboto", "Montserrat", "Lato";
+	font-weight: 500;
+	font-size: 14px;
+}
+
+.back-btn {
+	border-radius: 50%;
+	background-color: rgba(241, 240, 240, 75);
+	position: relative;
+}
+
+.right {
+    position: absolute;
+    right: 0px;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
