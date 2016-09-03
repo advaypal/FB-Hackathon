@@ -24,7 +24,6 @@ def get_all_tweets(screen_name):
 		alltweets.extend(new_tweets)
 		#update the id of the oldest tweet less one
 		oldest = alltweets[-1].id - 1
-		print "...%s tweets downloaded so far" % (len(alltweets))
 
 	# file = open('tweet.json', 'wb')
 	# print "Writing tweet objects to JSON please wait..."
