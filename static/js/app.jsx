@@ -15,8 +15,10 @@ var App = React.createClass({
 	handleClick: function() {
 		console.log("clicked");
 		console.log("Player 1 is " + player1 + " and Player 2 is " + player2);
-		ReactDOM.unmountComponentAtNode(document.getElementById('main'));
-		ReactDOM.render(<Battle />, document.getElementById("app"));
+		if(typeof player1 != 'undefined' || typeof player2 != 'undefined') {
+			ReactDOM.unmountComponentAtNode(document.getElementById('main'));
+			ReactDOM.render(<Battle />, document.getElementById("app"));
+		}
 	},
 	render: function() {
 		// create all the rows we need and populate into an array
@@ -91,7 +93,6 @@ var Battle = React.createClass({
 	componentDidMount() {
 		var apiUrl = "../tweets?id1=" + player1 + "&id2=" + player2;
 	    // put in a loading screen
-	    // ReactDOM.unmountComponentAtNode(document.getElementById('main'));
 
 	    this.serverRequest = $.get(apiUrl, function (result) {
 	    	var result = JSON.parse(result);
