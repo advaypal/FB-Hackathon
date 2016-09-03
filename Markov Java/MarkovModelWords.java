@@ -10,7 +10,7 @@ public class MarkovModelWords {
 	private HashMap<String, HashMap<String, Integer>> wordMap;
 	/**
 	 * MarkovModel constructor takes in the values of text and order and initializes instance variables
-	 * It also creates a hashmap(called wordMap) of hashmaps, where each hashmap in wordMap is 
+	 * It also creates a hashmap (called wordMap) of hashmaps, where each hashmap in wordMap is 
 	 * for a particular kgram, and stores the
 	 * words following the kgram with their frequencies
 	 * @param text Stores the input text file as a string
@@ -28,7 +28,7 @@ public class MarkovModelWords {
 	public String getNoWord() {
 		return NOWORD;
 	}
-	
+
 	/**
 	 * getFrequency calculates the frequency of the kgram in the string
 	 * It does so by iterating through the string and counting the number of occurrences of the kgram. The frequency is stored
@@ -135,4 +135,3 @@ public class MarkovModelWords {
 		random.setSeed(s);
 	}
 }
-
