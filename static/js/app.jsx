@@ -65,7 +65,9 @@ var Home = React.createClass({
 			<div className="row text-center">
 			<div className="col-md-4">
 			<div className="form-group">
-			<input type="text" className="custom-input animated fadeIn" id="usr" onChange={this.handleChangePlayer1}></input>
+			<div id="the-basics">
+			<input type="text" className="custom-input typeahead animated fadeIn" onChange={this.handleChangePlayer1}></input>
+			</div>
 			</div>
 			</div>
 			<div className="col-md-4 text-inverse">
@@ -73,7 +75,7 @@ var Home = React.createClass({
 			</div>
 			<div className="col-md-4">
 			<div className="form-group">
-			<input type="text" className="custom-input animated fadeIn" id="usr" onChange={this.handleChangePlayer2}></input>
+			<input type="text" className="custom-input typeahead animated fadeIn" onChange={this.handleChangePlayer2}></input>
 			</div>
 			</div>
 			</div>
@@ -181,7 +183,7 @@ var Footer = React.createClass({
 			
 			<ul className="nav navbar-nav">
 			<li>
-			<a href="#">
+			<a href="/">
 			<i className="fa fa-angle-left fa-2x" aria-hidden="true"></i>
 			</a>
 			</li>
