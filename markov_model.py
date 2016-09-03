@@ -64,7 +64,7 @@ class TextGenerator(object):
     """docstring for TextGenerator."""
     def __init__(self, text):
         super(TextGenerator, self).__init__()
-        text = text.split()
+        text = [word for word in text.split() if "https://" not in word]
         self._markov_model = MarkovModel(text)
         self._first_word = text[0]
 

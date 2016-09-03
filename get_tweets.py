@@ -4,8 +4,8 @@ from auth import *
 #
 def get_all_tweets(screen_name):
 	#initialize a list to hold all the tweepy Tweets
-	alltweets = []    
-	    
+	alltweets = []
+
 	#make initial request for most recent tweets (200 is the maximum allowed count)
 	new_tweets = api.user_timeline(screen_name = screen_name, count = 200)
 
@@ -26,7 +26,7 @@ def get_all_tweets(screen_name):
 		oldest = alltweets[-1].id - 1
 		print "...%s tweets downloaded so far" % (len(alltweets))
 
-	# file = open('tweet.json', 'wb') 
+	# file = open('tweet.json', 'wb')
 	# print "Writing tweet objects to JSON please wait..."
 	# for status in alltweets:
 	#     json.dump(status._json,file,sort_keys = True,indent = 4)
@@ -42,4 +42,3 @@ if __name__ == '__main__':
 
 def supply_name(screen_name):
 	get_all_tweets(screen_name)
-
