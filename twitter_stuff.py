@@ -36,5 +36,5 @@ def check(tweet):
 	else:
 		return ''
 
-if __name__ == '__main__':
-	print getImage("realDonaldTrump")
+# if __name__ == '__main__':
+# 	print getImage("realDonaldTrump")
