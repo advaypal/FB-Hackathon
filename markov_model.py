@@ -68,11 +68,10 @@ class TextGenerator(object):
         self._markov_model = MarkovModel(text)
         self._first_word = text[0]
 
-    def generate_text(self, start_word=None):
+    def generate_text(self, max_char, start_word=None):
         current = start_word if start_word else self._first_word
         num_chars = len(current)
         tweet = current
-        max_char = 140
         exceeded_max_char = False
 
         while not exceeded_max_char:
