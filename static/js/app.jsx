@@ -1,5 +1,9 @@
 var player1, player2;
 
+// define fields from json reply
+var img = 'img';
+var tweet = 'tweet';
+
 var App = React.createClass({
 	getInitialState() {
 		return {
@@ -7,16 +11,6 @@ var App = React.createClass({
 		};
 	},
 	componentWillMount() {
-		// var apiUrl = "../sample";
-		this.serverRequest = $.get(apiUrl, function (result) {
-			for (var i = 0; i < result.length; i++) { 
-				// populatedNames.push(result[i].name);
-				// populatedDescriptions.push(result[i].description);
-				// populatedRepoUrls.push(result[i].html_url);
-				// populatedHomepages.push(result[i].homepage);
-				print(result[i]);
-			}
-		}.bind(this));
 	},
 	handleClick: function() {
 		console.log("clicked");
@@ -87,11 +81,34 @@ var Home = React.createClass({
 });
 
 var Battle = React.createClass({
+	getInitialState() {
+	    return {
+	        player1: {},
+	        player2: {}
+	    };
+	},
+	componentDidMount() {
+	    var apiUrl = "../sample?id1=" + player1 + "&id2=" + player2;
+	    this.serverRequest = $.get(apiUrl, function (result) {
+	    	var result = JSON.parse(result);
+	    	console.log(result);
+	    	this.setState({
+	    		player1: {
+	    			tweet: result[player1][tweet],
+	    			img: result[player1][img]
+	    		},
+	    		player2: {
+	    			tweet: result[player2][tweet],
+	    			img: result[player2][img]
+	    		}
+	    	});
+	    }.bind(this));  
+	},
 	render: function() {
 		return (
 			<div className="container">
-				<Player1 />
-				<Player2 />
+				<Player1 name={player1} img={this.state.player1[img]} tweet={this.state.player1[tweet]} />
+				<Player2 name={player2} img={this.state.player2[img]} tweet={this.state.player2[tweet]} />
 			</div>
 		);
 	}
@@ -104,11 +121,10 @@ var Player1 = React.createClass({
 				<div className="row">
                 <div className="col-md-2"><img className="img-circle img-responsive"
                 src=
-                "http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png"/></div>
+                {this.props.img}/></div>
                 <div className="col-md-4 vcenter">
-                    <h3 className="text-left">John Doe</h3>
-                    <p className="bg-text-player1 text-left">Lorem ipsum dolor sit amet, adipiscing
-                    elit Aenean commodo ligula eget.</p>
+                    <h3 className="text-left">{player1}</h3>
+                    <p className="bg-text-player1 text-left">{this.props.tweet}</p>
                 </div>
             	</div>
 			</div>
@@ -125,13 +141,12 @@ var Player2 = React.createClass({
                 <div className="col-md-4"></div>
                 
                 <div className="col-md-4 text-center vcenter">
-                    <h3 className="text-left">John Doe</h3>
-                    <p className="bg-text-player2 text-left">Lorem ipsum dolor sit amet, adipiscing
-                    elit Aenean commodo ligula eget.</p>
+                    <h3 className="text-left">{player2}</h3>
+                    <p className="bg-text-player2 text-left">{this.props.tweet}</p>
                 </div>
                 <div className="col-md-2"><img className="img-circle img-responsive"
                 src=
-                "http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png"/></div>
+                {this.props.img}/></div>
             </div>
 			</div>
 		);
