@@ -9,21 +9,25 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route('/sample', methods=['GET'])
-def sampleAPI():
-    id1 = request.args.get('id1', '')
-    id2 = request.args.get('id2', '')
+@app.route('/tweets', methods=['GET'])
+def get_tweets():
+    screen_name1 = request.args.get('id1', '')
+    screen_name2 = request.args.get('id2', '')
+    #take ids, work magic, return tweets
+    tweet1 = getNewTweet(screen_name1)
+    tweet2 = getNewTweet(screen_name2)
+    img1 = getImage(screen_name1)
+    img2 = getImage(screen_name2)
     return json.dumps({
         id1: {
-            'tweet': "Hi I am a little basi who likes to whooski with his titchy doggy friends while playing football",
-            'img': 'http://i.cdn.turner.com/v5cache/CARTOON/site/Images/i80/tj_tom_180x180.png'
+            'tweet': tweet1,
+            'img': screen_name1
         },
         id2: {
-            'tweet': "Bye you little basi of a doggy catty bumyum",
-            'img': 'http://www.easydrawingtutorials.com/images/Jerry/jerry-thumb.jpg'
+            'tweet': tweet2,
+            'img': screen_name2
         }
     })
-
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
