@@ -135,6 +135,7 @@ var Battle = React.createClass({
 			display.push(<br/>);
 			display.push(<br/>);
 		}
+
 		return (
 			<div>
 			<div className="row">
@@ -159,10 +160,10 @@ var Player1 = React.createClass({
 		return (
 			<div>
 			<div className="row player1 hideme">
-			<div className="col-md-2 col-sm-2 col-xs-3"><img className="img-circle profile-pic img-responsive"
+			<div className="col-md-2 col-sm-2 col-xs-3 hvr-grow"><img className="img-circle profile-pic img-responsive"
 			src={this.props.img}/></div>
 			<div className="col-md-4 col-sm-4 col-xs-7 vcenter">
-			<h3 className="text-left animated fadeIn">{player1}</h3>
+			<h3 className="text-left animated fadeIn hvr-float">{player1}</h3>
 			<p className="bg-text-player1 text-left hvr-grow animated fadeIn">{this.props.tweet}
 			<span>  </span>
 			<a href={tweetUrl}><i className="fa fa-twitter" aria-hidden="true"></i></a>
@@ -184,13 +185,13 @@ var Player2 = React.createClass({
 			<div className="col-md-4 col-sm-4 col-xs-1"></div>
 
 			<div className="col-md-4 col-sm-4 col-xs-7 text-center vcenter right">
-			<h3 className="text-left animated fadeIn">{player2}</h3>
+			<h3 className="text-left animated fadeIn hvr-float">{player2}</h3>
 			<p className="bg-text-player2 text-left hvr-grow animated fadeIn text-inverse">{this.props.tweet}
 			<span>  </span>
 			<a href={tweetUrl}><i className="fa fa-twitter" aria-hidden="true"></i></a>
 			</p>
 			</div>
-			<div className="col-md-2 col-sm-2 col-xs-3 right animated fadeIn"><img className="img-circle profile-pic img-responsive"
+			<div className="col-md-2 col-sm-2 col-xs-3 right animated fadeIn"><img className="img-circle hvr-grow profile-pic img-responsive"
 			src=
 			{this.props.img}/></div>
 			</div>
