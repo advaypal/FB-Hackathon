@@ -18,7 +18,7 @@ def get_all_tweets(screen_name):
 	#keep grabbing tweets until there are no tweets left to grab
 	#while len(new_tweets) > 0:
 	for i in range(1):
-		#all subsiquent requests use the max_id param to prevent duplicates
+		#all subsequent requests use the max_id param to prevent duplicates
 		new_tweets = api.user_timeline(screen_name = screen_name, count = 200, max_id = oldest)
 		#save most recent tweets
 		alltweets.extend(new_tweets)
