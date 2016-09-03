@@ -15,8 +15,8 @@ def getText(user_screen_name):
 	user_tweet_string = ' '.join([check(tweet) for tweet in all_tweets])
 	text_generator = TextGenerator(user_tweet_string)
 	tweet_list = {}
-	flag = False
 	for i in range(NUMBER_OF_TWEETS):
+		flag = False
 		tweet = text_generator.generate_text(TWEET_LENGTH, "You")
 		for j in range(len(tweet) - 1, -1, -1):
 			if tweet[j] == '.' or tweet[j] == '?' or tweet[j] == '!':
