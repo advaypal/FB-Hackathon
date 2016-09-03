@@ -15,7 +15,7 @@ class MarkovModel(object):
 
         num_words = len(text)
         for idx in range(len(text)):
-            if idx + K >= num_words:
+            if idx + K == num_words - 1:
                 continue
 
             current_words = ' '.join(text[idx : idx + K])
@@ -79,7 +79,7 @@ class TextGenerator(object):
         while not exceeded_max_char:
             next_word = self._markov_model.get_next_word(current)
             next_word = next_word if next_word else self._first_word
-            current = ' '.join(current.split()[1:].append(next_word))
+            current = ' '.join(current.split(' ')[1:].append(next_word))
 
             if num_chars + len(next_word) > max_char:
                 exceeded_max_char = True
