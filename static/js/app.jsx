@@ -82,13 +82,17 @@ var Home = React.createClass({
 
 var Battle = React.createClass({
 	getInitialState() {
-	    return {
-	        player1: {},
-	        player2: {}
-	    };
+		return {
+			player1: {},
+			player2: {},
+			loading: false
+		};
 	},
 	componentDidMount() {
-	    var apiUrl = "../tweets?id1=" + player1 + "&id2=" + player2;
+		var apiUrl = "../sample?id1=" + player1 + "&id2=" + player2;
+	    // put in a loading screen
+	    // ReactDOM.unmountComponentAtNode(document.getElementById('main'));
+
 	    this.serverRequest = $.get(apiUrl, function (result) {
 	    	var result = JSON.parse(result);
 	    	console.log(result);
@@ -102,15 +106,22 @@ var Battle = React.createClass({
 	    			img: result[player2][img]
 	    		}
 	    	});
+	    	// unmount loading screen
 	    }.bind(this));  
 	},
 	render: function() {
+		var display = [];
+		for(var i = 0; i < 10; i++) {
+			display.push(<Player1 name={player1} img={this.state.player1[img]} tweet={this.state.player1[tweet]} />);
+			display.push(<Player2 name={player2} img={this.state.player2[img]} tweet={this.state.player2[tweet]} />);
+		}
 		return (
 			<div className="container">
-				<Player1 name={player1} img={this.state.player1[img]} tweet={this.state.player1[tweet]} />
-				<Player2 name={player2} img={this.state.player2[img]} tweet={this.state.player2[tweet]} />
+			
+			{display}
+			<Footer/>
 			</div>
-		);
+			);
 	}
 });
 
@@ -118,17 +129,16 @@ var Player1 = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<div className="row">
-                <div className="col-md-2"><img className="img-circle img-responsive"
-                src=
-                {this.props.img}/></div>
-                <div className="col-md-4 vcenter">
-                    <h3 className="text-left">{player1}</h3>
-                    <p className="bg-text-player1 text-left">{this.props.tweet}</p>
-                </div>
-            	</div>
+			<div className="row">
+			<div className="col-md-2 col-sm-2 col-xs-3"><img className="img-circle profile-pic img-responsive"
+			src={this.props.img}/></div>
+			<div className="col-md-4 col-sm-4 col-xs-7 vcenter">
+			<h3 className="text-left">{player1}</h3>
+			<p className="bg-text-player1 text-left">{this.props.tweet}</p>
 			</div>
-		);
+			</div>
+			</div>
+			);
 	}
 });
 
@@ -136,20 +146,63 @@ var Player2 = React.createClass({
 	render: function() {
 		return (
 			<div>	
-            <div className="row">
-                <div className="col-md-2"></div>
-                <div className="col-md-4"></div>
-                
-                <div className="col-md-4 text-center vcenter">
-                    <h3 className="text-left">{player2}</h3>
-                    <p className="bg-text-player2 text-left">{this.props.tweet}</p>
-                </div>
-                <div className="col-md-2"><img className="img-circle img-responsive"
-                src=
-                {this.props.img}/></div>
-            </div>
+			<div className="row">
+			<div className="col-md-2 col-sm-2 col-xs-1"></div>
+			<div className="col-md-4 col-sm-4 col-xs-1"></div>
+
+			<div className="col-md-4 col-sm-4 col-xs-7 text-center vcenter right">
+			<h3 className="text-left">{player2}</h3>
+			<p className="bg-text-player2 text-left">{this.props.tweet}</p>
 			</div>
-		);
+			<div className="col-md-2 col-sm-2 col-xs-3 right"><img className="img-circle profile-pic img-responsive"
+			src=
+			{this.props.img}/></div>
+			</div>
+			</div>
+			);
+	}
+});
+
+var Footer = React.createClass({
+	render: function() {
+		return (
+			<div className="navbar navbar-default navbar-fixed-bottom custom-footer">
+			<div className="container">
+			<div className="navbar-header navbar-fixed-top">
+			
+			</div>
+			
+			<ul className="nav navbar-nav">
+			<li>
+			<a href="#">
+				<i className="fa fa-angle-left fa-2x" aria-hidden="true"></i>
+			</a>
+			</li>
+			</ul>
+			</div>
+			
+			</div>
+			);
+	}
+});
+
+var Loader = React.createClass({
+	render: function() {
+		return (
+			<div className="overlay">
+
+			<a href="javascript:void(0)" className="closebtn" onclick="closeNav()">&times;</a>
+
+
+			<div className="overlay-content">
+			<a href="#">About</a>
+			<a href="#">Services</a>
+			<a href="#">Clients</a>
+			<a href="#">Contact</a>
+			</div>
+
+			</div>
+			);
 	}
 });
 
