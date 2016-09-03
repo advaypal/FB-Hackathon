@@ -15,7 +15,7 @@ class MarkovModel(object):
 
         num_words = len(text)
         for idx in range(len(text)):
-            if idx + K == num_words:
+            if idx + K >= num_words:
                 continue
 
             current_words = ' '.join(text[idx : idx + K])
