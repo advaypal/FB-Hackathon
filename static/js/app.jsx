@@ -95,8 +95,9 @@ var Battle = React.createClass({
 	componentDidMount() {
 		var apiUrl = "../tweets?id1=" + player1 + "&id2=" + player2;
 	    // put in a loading screen
-
+	    ReactDOM.render(<ActivitySpinner />, document.getElementById("loader"));
 	    this.serverRequest = $.get(apiUrl, function (result) {
+	    	ReactDOM.unmountComponentAtNode(document.getElementById("loader"));
 	    	var result = JSON.parse(result);
 	    	console.log(result);
 	    	console.log(result[player1][tweet][0]);
@@ -223,6 +224,5 @@ var ActivitySpinner = React.createClass({
     }
 });
 
-module.exports 
 
 ReactDOM.render(<App />, document.getElementById("main"));
