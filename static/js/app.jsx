@@ -99,7 +99,7 @@ var Battle = React.createClass({
 	componentDidMount() {
 		var apiUrl = "../tweets?id1=" + player1 + "&id2=" + player2;
 	    // put in a loading screen
-	    ReactDOM.render(<ActivitySpinner />, document.getElementById("loader"));
+	   ReactDOM.render(<ActivitySpinner />, document.getElementById("loader"));
 	    this.serverRequest = $.get(apiUrl, function (result) {
 	    	ReactDOM.unmountComponentAtNode(document.getElementById("loader"));
 	    	var result = JSON.parse(result);
