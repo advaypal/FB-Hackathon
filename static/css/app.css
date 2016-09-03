@@ -114,7 +114,8 @@ button:focus {
 .bg-text-player2 {
 	padding: 10px;
 	border-radius: 7px;
-	background-color: rgba(0, 132, 255, 75);
+	/*background-color: rgba(0, 132, 255, 75);*/
+	background-color: rgba(232, 161, 29, 75);
 }
 
 .custom-footer {
@@ -148,8 +149,25 @@ button:focus {
     transition: 0.5s;
 }
 
+.hideme {
+	opacity: 0;
+}
+
+.logo {
+	max-height: 75px;
+	max-width: 75px;
+	border-radius: 50%;
+}
+
 .appscreen {
-	/*background: rgba(232,106,12,0.5);*/
-	background-image: url("../images/bg3.jpg");
+	margin: 20px;
+	padding: 20px;
+background: -moz-linear-gradient(45deg, rgba(43,192,228,0.8) 0%, rgba(234,236,198,1) 100%); /* ff3.6+ */
+background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(43,192,228,0.8)), color-stop(100%, rgba(234,236,198,1))); /* safari4+,chrome */
+background: -webkit-linear-gradient(45deg, rgba(43,192,228,0.8) 0%, rgba(234,236,198,1) 100%); /* safari5.1+,chrome10+ */
+background: -o-linear-gradient(45deg, rgba(43,192,228,0.8) 0%, rgba(234,236,198,1) 100%); /* opera 11.10+ */
+background: -ms-linear-gradient(45deg, rgba(43,192,228,0.8) 0%, rgba(234,236,198,1) 100%); /* ie10+ */
+background: linear-gradient(45deg, rgba(43,192,228,0.8) 0%, rgba(234,236,198,1) 100%); /* w3c */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EAECC6', endColorstr='#2BC0E4',GradientType=1 ); /* ie6-9 */
 	background-size: cover;
 }
