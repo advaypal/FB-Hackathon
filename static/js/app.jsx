@@ -1,4 +1,4 @@
-var player1, player2;
+var player1 = 'realDonaldTrump', player2='narendramodi';
 
 // define fields from json reply
 var img = 'img';
@@ -56,14 +56,14 @@ var Home = React.createClass({
 			<div>
 			<div className="row">
 			<div className="col-md-12 text-center">
-			<h1 className="text-inverse heading">Tweet Battle</h1>
-			<p className="text-inverse">The Epic Tweet Battle</p>
+			<h1 className="text-inverse heading animated bounceInDown">Tweet Battle</h1>
+			<p className="text-inverse animated tada">The Epic Tweet Battle</p>
 			</div>
 			</div>
 			<div className="row text-center">
 			<div className="col-md-4">
 			<div className="form-group">
-			<input type="text" className="custom-input" id="usr" onChange={this.handleChangePlayer1}></input>
+			<input type="text" className="custom-input animated fadeIn" id="usr" onChange={this.handleChangePlayer1}></input>
 			</div>
 			</div>
 			<div className="col-md-4 text-inverse">
@@ -71,7 +71,7 @@ var Home = React.createClass({
 			</div>
 			<div className="col-md-4">
 			<div className="form-group">
-			<input type="text" className="custom-input" id="usr" onChange={this.handleChangePlayer2}></input>
+			<input type="text" className="custom-input animated fadeIn" id="usr" onChange={this.handleChangePlayer2}></input>
 			</div>
 			</div>
 			</div>
@@ -89,7 +89,7 @@ var Battle = React.createClass({
 		};
 	},
 	componentDidMount() {
-		var apiUrl = "../sample?id1=" + player1 + "&id2=" + player2;
+		var apiUrl = "../tweets?id1=" + player1 + "&id2=" + player2;
 	    // put in a loading screen
 	    // ReactDOM.unmountComponentAtNode(document.getElementById('main'));
 
