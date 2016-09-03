@@ -26,7 +26,7 @@ var App = React.createClass({
 			<div>
 			<div className="cover">
 			<div className="cover-image"></div>
-			<div className="container">
+			<div className="container home">
 
 			<Home />
 
@@ -97,6 +97,7 @@ var Battle = React.createClass({
 	    this.serverRequest = $.get(apiUrl, function (result) {
 	    	var result = JSON.parse(result);
 	    	console.log(result);
+	    	console.log(result[player1][tweet][0]);
 	    	this.setState({
 	    		player1: {
 	    			tweet: result[player1][tweet],
@@ -112,9 +113,14 @@ var Battle = React.createClass({
 	},
 	render: function() {
 		var display = [];
-		for(var i = 0; i < 10; i++) {
-			display.push(<Player1 name={player1} img={this.state.player1[img]} tweet={this.state.player1[tweet]} />);
-			display.push(<Player2 name={player2} img={this.state.player2[img]} tweet={this.state.player2[tweet]} />);
+		var arr = this.state.player1[tweet];
+		console.log(arr);
+
+		if(typeof this.state.player1[tweet] != 'undefined') {
+			for(var i = 0; i < 5; i++) {
+				display.push(<Player1 name={player1} img={this.state.player1[img]} tweet={this.state.player1[tweet][i]} />);
+				display.push(<Player2 name={player2} img={this.state.player2[img]} tweet={this.state.player2[tweet][i]} />);
+			}
 		}
 		return (
 			<div className="container">
@@ -176,7 +182,7 @@ var Footer = React.createClass({
 			<ul className="nav navbar-nav">
 			<li>
 			<a href="#">
-				<i className="fa fa-angle-left fa-2x" aria-hidden="true"></i>
+			<i className="fa fa-angle-left fa-2x" aria-hidden="true"></i>
 			</a>
 			</li>
 			</ul>
