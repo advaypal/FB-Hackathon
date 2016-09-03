@@ -1,6 +1,20 @@
 $(document).ready(function(){
-    $('input.typeahead').typeahead({
-      name: 'accounts',
-      local: ['Audi', 'BMW', 'Bugatti', 'Ferrari', 'Ford', 'Lamborghini', 'Mercedes Benz', 'Porsche', 'Rolls-Royce', 'Volkswagen']
-    });
+	window.sr = ScrollReveal();
+	sr.reveal('.player1');
+	sr.reveal('.player2');
+
+	$(window).scroll( function(){
+
+		/* Check the location of each desired element */
+		$('.hideme').each( function(i){
+			var i = 0;
+			var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+			var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+			/* If the object is completely visible in the window, fade it in */
+			if( bottom_of_window > bottom_of_object / 10 * 10){
+				$(this).animate({'opacity':'1'},700);
+			}
+		}); 
+	});
 });  

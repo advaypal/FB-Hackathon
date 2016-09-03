@@ -8,7 +8,6 @@ class MarkovModel(object):
         self._FREQ_IDX = 0
         self._NEXT_WORD_MAP_IDX = 1
         self._model = self.generate_model(text)
-        print(str(self._model['will']))
 
     def generate_model(self, text):
         word_dict = {}
