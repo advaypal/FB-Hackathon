@@ -3,25 +3,20 @@ var player1, player2;
 var App = React.createClass({
 	getInitialState() {
 		return {
-
+			tweet: {}
 		};
 	},
 	componentWillMount() {
-		// var apiUrl = "https://api.github.com/users/" + gitHubUserName + "/repos";
-		// this.serverRequest = $.get(apiUrl, function (result) {
-		// 	for (var i = 0; i < result.length; i++) { 
-		// 		populatedNames.push(result[i].name);
-		// 		populatedDescriptions.push(result[i].description);
-		// 		populatedRepoUrls.push(result[i].html_url);
-		// 		populatedHomepages.push(result[i].homepage);
-		// 	}
-		// 	this.setState({
-		// 		names: populatedNames,
-		// 		description: populatedDescriptions,
-		// 		repoUrls: populatedRepoUrls,
-		// 		homepages: populatedHomepages
-		// 	});
-		// }.bind(this));
+		// var apiUrl = "../sample";
+		this.serverRequest = $.get(apiUrl, function (result) {
+			for (var i = 0; i < result.length; i++) { 
+				// populatedNames.push(result[i].name);
+				// populatedDescriptions.push(result[i].description);
+				// populatedRepoUrls.push(result[i].html_url);
+				// populatedHomepages.push(result[i].homepage);
+				print(result[i]);
+			}
+		}.bind(this));
 	},
 	handleClick: function() {
 		console.log("clicked");
