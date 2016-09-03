@@ -9,7 +9,7 @@ body {
 }
 
 .cover-image {
-	background-image: url('../images/bg.jpg');
+	background-image: url('../images/battlescene.jpg');
 }
 
 .vcenter {
@@ -35,6 +35,7 @@ body {
 	font-size: 36px;
 	word-wrap: break-word;
 	text-transform: capitalize;
+	color: #000000
 }
 
 .description {
