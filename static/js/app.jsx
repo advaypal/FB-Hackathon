@@ -95,7 +95,6 @@ var Battle = React.createClass({
 	componentDidMount() {
 		var apiUrl = "../tweets?id1=" + player1 + "&id2=" + player2;
 	    // put in a loading screen
-
 	    this.serverRequest = $.get(apiUrl, function (result) {
 	    	var result = JSON.parse(result);
 	    	console.log(result);
@@ -113,6 +112,9 @@ var Battle = React.createClass({
 	    	// unmount loading screen
 	    }.bind(this));  
 	},
+	handleKeyPress: function() {
+		console.log("Print");
+	},
 	render: function() {
 		var display = [];
 		var arr = this.state.player1[tweet];
@@ -120,13 +122,15 @@ var Battle = React.createClass({
 
 		if(typeof this.state.player1[tweet] != 'undefined') {
 			for(var i = 0; i < 5; i++) {
-				display.push(<Player1 name={player1} img={this.state.player1[img]} tweet={this.state.player1[tweet][i]} />);
-				display.push(<Player2 name={player2} img={this.state.player2[img]} tweet={this.state.player2[tweet][i]} />);
+				display.push(<Player1 name={player1} img={this.state.player1[img]} tweet={this.state.player1[tweet][i]} key={"player1" + i} />);
+				display.push(<Player2 name={player2} img={this.state.player2[img]} tweet={this.state.player2[tweet][i]} key={"player2" + i} />);
 			}
+			display.push(<br/>);
+			display.push(<br/>);
+			display.push(<br/>);
 		}
 		return (
 			<div className="container">
-			
 			{display}
 			<Footer/>
 			</div>
@@ -142,8 +146,8 @@ var Player1 = React.createClass({
 			<div className="col-md-2 col-sm-2 col-xs-3"><img className="img-circle profile-pic img-responsive"
 			src={this.props.img}/></div>
 			<div className="col-md-4 col-sm-4 col-xs-7 vcenter">
-			<h3 className="text-left">{player1}</h3>
-			<p className="bg-text-player1 text-left">{this.props.tweet}</p>
+			<h3 className="text-left animated fadeIn">{player1}</h3>
+			<p className="bg-text-player1 text-left animated fadeIn">{this.props.tweet}</p>
 			</div>
 			</div>
 			</div>
@@ -160,10 +164,10 @@ var Player2 = React.createClass({
 			<div className="col-md-4 col-sm-4 col-xs-1"></div>
 
 			<div className="col-md-4 col-sm-4 col-xs-7 text-center vcenter right">
-			<h3 className="text-left">{player2}</h3>
-			<p className="bg-text-player2 text-left">{this.props.tweet}</p>
+			<h3 className="text-left animated fadeIn">{player2}</h3>
+			<p className="bg-text-player2 text-left animated fadeIn">{this.props.tweet}</p>
 			</div>
-			<div className="col-md-2 col-sm-2 col-xs-3 right"><img className="img-circle profile-pic img-responsive"
+			<div className="col-md-2 col-sm-2 col-xs-3 right animated fadeIn"><img className="img-circle profile-pic img-responsive"
 			src=
 			{this.props.img}/></div>
 			</div>
