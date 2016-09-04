@@ -141,6 +141,7 @@ var Battle = React.createClass({
 			<div className="row">
 				<div className="col-md-12 text-center">
 					<img className="logo" src="../static/images/box.jpg" />
+					<h2 className="heading">Tweet Battle</h2>
 				</div>
 			</div>
 			<div className="container appscreen">
