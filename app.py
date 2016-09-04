@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import os
 import json
 from twitter_stuff import *
+from flask.ext.bower import Bower
 
 app = Flask(__name__)
 
@@ -29,6 +30,9 @@ def get_tweets():
             'img': img2
         }
     })
+    
+Bower(app)
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
