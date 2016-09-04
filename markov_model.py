@@ -71,14 +71,19 @@ class TextGenerator(object):
         self._first_word = ' '.join(text[:K])
 
     def generate_text(self, max_char, start_word=None):
-        current = start_word if start_word else self._first_word
+        current = start_word if start_word and self._markov_model.get_next_word(start_word) else self._first_word            
         num_chars = len(current)
         tweet = current
         exceeded_max_char = False
 
         while not exceeded_max_char:
             next_word = self._markov_model.get_next_word(current)
-            next_word = next_word if next_word else self._first_word
+            if not next_word:
+                current = self._first_word
+                tweet += " " + current
+                num_chars += len(current)
+                continue
+
             current = ' '.join(current.split(' ')[1:] + [next_word])
 
             if num_chars + len(next_word) > max_char:
