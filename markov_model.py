@@ -64,14 +64,14 @@ class MarkovModel(object):
 
 class TextGenerator(object):
     """docstring for TextGenerator."""
-    def __init__(self, text):
+    def __init__(self, text, first_words):
         super(TextGenerator, self).__init__()
         text = [word.replace('&amp;', '&') for word in text.split() if "https://" not in word]
         self._markov_model = MarkovModel(text)
-        self._first_word = ' '.join(text[:K])
+        self._first_word = first_words
 
-    def generate_text(self, max_char, start_word=None):
-        current = start_word if start_word and self._markov_model.get_next_word(start_word) else self._first_word            
+    def generate_text(self, max_char, i, start_word=None):
+        current = start_word if start_word and self._markov_model.get_next_word(start_word) else self._first_word[i]
         num_chars = len(current)
         tweet = current
         exceeded_max_char = False
@@ -79,7 +79,7 @@ class TextGenerator(object):
         while not exceeded_max_char:
             next_word = self._markov_model.get_next_word(current)
             if not next_word:
-                current = self._first_word
+                current = self._first_word[i]
                 tweet += " " + current
                 num_chars += len(current)
                 continue
