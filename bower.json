@@ -1,0 +1,25 @@
+{
+  "name": "TweetBattle",
+  "homepage": "https://github.com/advaypal/FB-Hackathon",
+  "authors": [
+    "Advay Pal <advaypal@hotmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "animate.css": "^3.5.2",
+    "normalize-css": "^4.2.0",
+    "hover": "Hover#^2.0.2",
+    "font-awesome": "^4.6.3",
+    "scrollreveal": "^3.3.1"
+  }
+}
