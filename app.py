@@ -15,8 +15,8 @@ def get_tweets():
     screen_name1 = request.args.get('id1', '')
     screen_name2 = request.args.get('id2', '')
     # take ids, work magic, return tweets
-    tweet1 = getText(screen_name1)
-    tweet2 = getText(screen_name2)
+    tweet1 = getText(screen_name1, "You are")
+    tweet2 = getText(screen_name2, "You are")
     img1 = getImage(screen_name1)
     img2 = getImage(screen_name2)
     return json.dumps({
