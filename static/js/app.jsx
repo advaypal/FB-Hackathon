@@ -1,5 +1,5 @@
 var player1 = 'realDonaldTrump', player2='HillaryClinton';
-
+var winner = '';
 window.sr = ScrollReveal();
 	sr.reveal('.player1');
 	sr.reveal('.player2');
@@ -140,7 +140,7 @@ var Battle = React.createClass({
 			<div>
 			<div className="row">
 				<div className="col-md-12 text-center">
-					<img className="logo" src="../static/images/box.jpg" />
+					<img className="logo hvr-grow" src="../static/images/box.jpg" />
 					<h2 className="heading">Tweet Battle</h2>
 				</div>
 			</div>
@@ -148,6 +148,7 @@ var Battle = React.createClass({
 			<br/>
 			<br/>
 			{display}
+			<HighFive player1={player1} player2={player2}/>
 			<Footer/>
 			</div>
 			</div>
@@ -186,7 +187,7 @@ var Player2 = React.createClass({
 			<div className="col-md-4 col-sm-4 col-xs-1"></div>
 
 			<div className="col-md-4 col-sm-4 col-xs-7 text-center vcenter right">
-			<h3 className="text-left animated fadeIn hvr-float">{player2}</h3>
+			<h3 className="text-left animated fadeIn hvr-float pull-right">{player2}</h3>
 			<p className="bg-text-player2 text-left hvr-grow animated fadeIn text-inverse">{this.props.tweet}
 			<span>  </span>
 			<a href={tweetUrl}><i className="fa fa-twitter" aria-hidden="true"></i></a>
@@ -242,6 +243,43 @@ var Loader = React.createClass({
 
 			</div>
 			);
+	}
+});
+
+var HighFive = React.createClass({
+	getInitialState() {
+	    return {
+	        winner: ""
+	    };
+	},
+	clickedLeft: function() {
+		winner = player1;
+		this.setState({
+			winner: this.props.player1
+		});
+	},
+	clickedRight: function() {
+		winner = player2;
+		this.setState({
+			winner: this.props.player2
+		});
+	},
+	render: function() {
+		return (
+			<div>
+				<div className="row">
+					<div className="col-md-2">
+						<img src="../static/images/left.png" onClick={this.clickedLeft}/>
+					</div>
+					<div className="col-md-8 text-center">
+						{winner != '' ? <h1 className="heading">{this.state.winner} wins!!</h1> : null}
+					</div>
+					<div className="col-md-2 pull-right">
+						<img src="../static/images/right.png" onClick={this.clickedRight} />
+					</div>
+				</div>
+			</div>
+		);
 	}
 });
 
